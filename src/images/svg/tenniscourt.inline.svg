@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 520 350" style="enable-background:new 0 0 520 350;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#F19E54;}
+	.st1{fill:url(#SVGID_1_);stroke:#A87C4F;stroke-width:0.75;stroke-miterlimit:10;}
+	.st2{fill:#FFE3C4;}
+	.st3{opacity:0.31;fill:#9675B3;}
+	.st4{fill:none;stroke:#A87C4F;stroke-width:0.75;stroke-miterlimit:10;}
+	.st5{fill:url(#SVGID_2_);stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st6{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st7{opacity:0.22;fill:#2B388F;}
+	.st8{fill:#C3996B;stroke:#A87C4F;stroke-width:0.75;stroke-miterlimit:10;}
+	.st9{opacity:0.2;fill:#FFFFFF;}
+	.st10{opacity:0.12;fill:#2B388F;}
+	.st11{opacity:0.2;fill:#71287A;}
+	.st12{fill:url(#SVGID_3_);stroke:#A87C4F;stroke-width:0.5;stroke-miterlimit:10;}
+	.st13{fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-miterlimit:10;}
+</style>
+<g>
+	<path class="st0" d="M515.1,186L312.7,302.9c-0.7,0.4-1.6,0.4-2.3,0C291.1,291.8,38.5,145.9,5.8,127c-0.1,0-0.1-0.1-0.2-0.2l-0.6,0
+		v15.3l306.5,176.7L516.1,201v-15.3l-0.4-0.1C515.5,185.7,515.3,185.9,515.1,186z"/>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="4.6501" y1="154.5033" x2="516.2922" y2="154.5033">
+		<stop  offset="0.2892" style="stop-color:#FFCF61"/>
+		<stop  offset="1" style="stop-color:#F28F3F"/>
+		<stop  offset="1" style="stop-color:#F4A34B"/>
+	</linearGradient>
+	<path class="st1" d="M515.1,182C482.4,163.1,229.8,17.2,210.6,6.1c-0.7-0.4-1.6-0.4-2.3,0L5.8,123c-1.6,0.9-1.6,3.1,0,4
+		c32.7,18.9,285.3,164.7,304.5,175.8c0.7,0.4,1.6,0.4,2.3,0L515.1,186C516.7,185.1,516.7,182.9,515.1,182z"/>
+	<polygon class="st2" points="5,142.2 5,168.1 311.5,344.8 516.1,226.9 516.1,201 311.5,318.9 	"/>
+	<polyline class="st3" points="311.5,344.5 311.5,303.2 516,185.5 516.1,226.8 312,344.5 	"/>
+	<polyline class="st4" points="4.7,141.7 311.5,318.9 516.1,200.8 	"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="44.2966" y1="155.0496" x2="476.69" y2="155.0496">
+		<stop  offset="0.173" style="stop-color:#F29851"/>
+		<stop  offset="1" style="stop-color:#EE563B"/>
+	</linearGradient>
+	<polygon class="st5" points="476.7,179.7 217.7,30.2 44.3,130.4 303.2,279.9 	"/>
+	<line class="st6" x1="70.3" y1="114.5" x2="329.2" y2="264"/>
+	<line class="st6" x1="191.8" y1="46.1" x2="450.7" y2="195.6"/>
+	<line class="st6" x1="193.7" y1="113.9" x2="327.7" y2="191.3"/>
+	<line class="st6" x1="385.2" y1="158.1" x2="265.9" y2="227"/>
+	<line class="st6" x1="251.1" y1="80.7" x2="131.8" y2="149.7"/>
+	<path class="st7" d="M348.4,115.6c-1,1.7-3.1,2.2-4.8,1.3l-14.3-8.3c-1.7-1-1.5-2.7-0.6-4.3c1-1.7,2.4-2.7,4-1.7l14.3,8.3
+		C348.8,111.8,349.4,113.9,348.4,115.6z"/>
+	<path class="st8" d="M331.3,75.4c-1.9,0-3.5,1.6-3.5,3.5v26.7c0,1.9,1.6,2.7,3.5,2.7s3.5-0.7,3.5-2.7V78.9
+		C334.8,76.9,333.2,75.4,331.3,75.4z"/>
+	<polygon class="st9" points="330.6,106 177.8,194.1 177.8,170.6 330.6,82.4 	"/>
+	<polygon class="st10" points="193.4,202.8 343.1,116.3 331,109.3 181.3,195.7 	"/>
+	<path class="st7" d="M192.5,205.8c-1,1.7-3.1,2.2-4.8,1.3l-14.3-8.3c-1.7-1-1.5-2.7-0.6-4.3c1-1.7,2.4-2.7,4-1.7l14.3,8.3
+		C192.9,202,193.4,204.1,192.5,205.8z"/>
+	<g>
+		<ellipse transform="matrix(0.5 -0.866 0.866 0.5 -49.5329 171.4093)" class="st11" cx="123.7" cy="128.6" rx="3.1" ry="6.6"/>
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="118.0621" y1="121.532" x2="124.6456" y2="125.8073">
+			<stop  offset="0.4081" style="stop-color:#D8DF22"/>
+			<stop  offset="0.5225" style="stop-color:#D4DC23"/>
+			<stop  offset="0.6328" style="stop-color:#C9D526"/>
+			<stop  offset="0.7415" style="stop-color:#B5C72C"/>
+			<stop  offset="0.8492" style="stop-color:#9AB533"/>
+			<stop  offset="0.9552" style="stop-color:#779E3D"/>
+			<stop  offset="1" style="stop-color:#669242"/>
+		</linearGradient>
+		<circle class="st12" cx="121.4" cy="123.7" r="3.9"/>
+	</g>
+	<line class="st13" x1="330.1" y1="82.4" x2="177.1" y2="170.7"/>
+	<path class="st8" d="M175.3,165.6c-1.9,0-3.5,1.6-3.5,3.5v26.7c0,1.9,1.6,2.7,3.5,2.7s3.5-0.7,3.5-2.7v-26.7
+		C178.8,167.2,177.3,165.6,175.3,165.6z"/>
+	<line class="st4" x1="311.5" y1="303.6" x2="311.5" y2="344.9"/>
+	<path class="st4" d="M516.1,184.8l0,40.8c0,0.8-0.4,1.6-1.2,2L312.7,344.2c-0.7,0.4-1.6,0.4-2.3,0C290.6,332.8,25.7,180.1,6,168.7
+		c-0.7-0.4-1.2-1.2-1.2-2l0-40.8"/>
+</g>
+</svg>
