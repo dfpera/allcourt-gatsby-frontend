@@ -19,7 +19,6 @@ module.exports = {
       },
     },
     fontFamily: {},
-    extend: {},
   },
   plugins: [],
 }
