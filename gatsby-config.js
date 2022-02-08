@@ -5,6 +5,8 @@ module.exports = {
      siteUrl: `https://www.yourdomain.tld`
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-json`,
     `gatsby-plugin-image`,
     // `gatsby-plugin-mdx`,
     `gatsby-plugin-postcss`,
@@ -17,7 +19,8 @@ module.exports = {
         'path': './src/images/'
       },
       __key: 'images'
-    }, {
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         'name': 'pages',
@@ -26,12 +29,20 @@ module.exports = {
       __key: 'pages'
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        'name': 'data',
+        'path': './src/data/'
+      },
+      __key: 'data'
+    },
+    {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
           include: /\.inline\.svg$/
         }
       }
-    }
+    },
   ]
 };

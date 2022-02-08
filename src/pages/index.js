@@ -8,9 +8,10 @@ const IndexPage = ({data}) => {
   return (
     <Layout>
 
-      <header className='relative mt-32'>
-        <h1>{data.site.siteMetadata.title}</h1>
-        <p>{data.site.siteMetadata.subtitle}</p>
+      <header className='relative'>
+        <h1>{data.dataJson.title}</h1>
+        <p>{data.dataJson.subtitle}</p>
+        <p>{data.dataJson.excerpt}</p>
         <TennisCourtSvg className='absolute right-0 top-[-3rem] w-72' />
       </header>
 
@@ -20,11 +21,10 @@ const IndexPage = ({data}) => {
 
 export const data = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-        subtitle
-      }
+    dataJson {
+      title
+      subtitle
+      excerpt
     }
   }
 `
