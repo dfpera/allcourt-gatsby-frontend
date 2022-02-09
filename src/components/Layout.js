@@ -8,12 +8,14 @@ const Layout = ({children}) => {
   return (
     <>
       <Helmet>
-        <body className='border-t-8 border-secondary
-                         px-8
-                         min-h-screen' />
+        <body className='px-8 relative min-h-screen
+                         border-b-[5rem] border-bg' />
       </Helmet>
 
-      <div className='relative max-w-5xl mx-[auto] mt-32'>
+      {/* Top orange border thing for aesthetics */}
+      <div className='border-t-8 border-secondary fixed top-0 left-0 right-0 z-10' aria-hidden></div>
+
+      <div className='relative max-w-5xl mx-[auto] pt-32'>
         <div className='fixed'>
           <Navigation />
         </div>
@@ -24,6 +26,8 @@ const Layout = ({children}) => {
 
         <Footer />
       </div>
+
+      {/* <div className='border-b-[5rem] ' aria-hidden></div> */}
     </>
   )
 }

@@ -22,15 +22,31 @@ const customCreatePages = async (graphql, actions, jsonDataName) => {
   const allEntries = query.data[queryJsonFileName].nodes
 
   allEntries.forEach((entry, index) => {
-    const pathVar = `${jsonDataName.toLowerCase()}${slugify.slugify(entry.header)}`
-    console.log(pathVar)
+    const pathVar = `/${jsonDataName.toLowerCase()}${slugify.slugify(entry.header)}`
+    var nextEntry, prevEntry = null
+
+    // Next post info
+    if (index !== 0) {
+      nextEntry = allEntries[index - 1]
+      nextEntry.slug = `/${jsonDataName.toLowerCase()}${slugify.slugify(nextEntry.header)}`
+      nextEntry.index = index - 1
+    }
+
+    // Prev post info
+    if (index !== allEntries.length - 1) {
+      prevEntry = allEntries[index + 1]
+      prevEntry.slug = `/${jsonDataName.toLowerCase()}${slugify.slugify(prevEntry.header)}`
+      prevEntry.index = index + 1
+    }
+
     createPage({
-      path: `${jsonDataName.toLowerCase()}${slugify.slugify(entry.header)}`,
+      path: pathVar,
       component: path.resolve(`./src/components/${jsonDataName}Template.js`),
       context: {
         id: entry.id,
-        next: index === 0 ? null : allEntries[index - 1],
-        prev: index === allEntries.length - 1 ? null : allEntries[index + 1]
+        index: index,
+        next: nextEntry,
+        prev: prevEntry
       }
     })
   })

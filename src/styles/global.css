@@ -23,9 +23,10 @@
 
   body {
     font-family: 'JetBrains Mono', monospace;
-    font-weight: 435;
+    font-weight: 330;
     font-style: normal;
   }
+  strong { font-weight: 700; }
   h1 { @apply text-5xl; }
   h2 { @apply text-4xl; }
   h3 { @apply text-2xl; }

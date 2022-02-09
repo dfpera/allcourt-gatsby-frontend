@@ -1,6 +1,8 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
-import Layout from './Layout.js'
+import { graphql, Link } from 'gatsby'
+import Layout from './Layout'
+import Arrow from './Arrow'
+import PaginationItem from './PaginationItem'
 
 const PostTemplate = ({data, pageContext}) => {
 
@@ -8,18 +10,39 @@ const PostTemplate = ({data, pageContext}) => {
 
   return (
     <Layout>
-      <header>
-        <h1>{header}</h1>
-        <p>{subheader}</p>
-      </header>
+      <div className='px-12'>
+        <header className='mb-8'>
+          <span className='block mb-12 text-primary text-3xl'>
+            0{pageContext.index}
+          </span>
+          <h1 className='mb-4 tracking-tighter'>{header}</h1>
+          <p className='italic text-gray'>{subheader}</p>
+          {console.log(data.processJson)}
+        </header>
 
-      <section>
         {content}
-      </section>
 
-      <section>
-        {/* pagination stuff goes here */}
-      </section>
+        <hr className='my-12 rotate-[-1deg] text-secondary
+                        mx-[-3rem]' />
+
+        {/* Pagination */}
+        <section className='grid grid-cols-[1fr_3rem_1fr]'>
+          {pageContext.next &&
+            <PaginationItem entry={pageContext.next}
+              direction='left'
+              className='self-end' />
+          }
+          <div className='relative self-center col-start-2'>
+            <span className='absolute border-b border-kumquat w-12 rotate-[30deg]' aria-hidden></span>
+            <span className='absolute border-b border-kumquat w-12 rotate-[-60deg]' aria-hidden></span>
+          </div>
+          {pageContext.prev &&
+            <PaginationItem entry={pageContext.prev}
+              direction='right'
+              className='self-start col-start-3' />
+          }
+        </section>
+      </div>
     </Layout>
   )
 }
@@ -30,6 +53,7 @@ export const query = graphql`
       header
       subheader
       content
+      heroImage
     }
   }
 `

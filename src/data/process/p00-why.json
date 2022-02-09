@@ -1,7 +1,9 @@
 {
   "header": "Why are we doing this?",
-  "subheader": "Week 1 (September 5 - 11)",
+  "subheader": "Week 1 (Sept 5-11)",
+  "date": "2017-09-11",
   "entryNum": "00",
+  "heroImage": "./src/images/update0_cats.jpg",
   "excerpt": "“You know what? Tennis is a pretty complicated sport. How do we pinpoint match trends, so that players can understand where and why they are losing points?",
   "content": "“You know what? Tennis is a pretty complicated sport. How do we pinpoint match trends, so that players can understand where and why they are losing points?"
 }
