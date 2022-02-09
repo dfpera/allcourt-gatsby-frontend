@@ -15,7 +15,8 @@ const Arrow = ({direction, className}) => {
 
   return (
     <span className={`text-primary font-bold block absolute
-                     ${extraClasses} ${thisClassName}`}>
+                     ${extraClasses} ${thisClassName}`}
+                     aria-hidden >
       {arrowChar}
     </span>
   )

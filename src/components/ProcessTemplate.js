@@ -12,7 +12,7 @@ const PostTemplate = ({data, pageContext}) => {
     <Layout>
       <div className='px-12'>
         <header className='mb-8'>
-          <span className='block mb-12 text-primary text-3xl'>
+          <span className='block mb-12 text-primary text-3xl' aria-hidden>
             0{pageContext.index}
           </span>
           <h1 className='mb-4 tracking-tighter'>{header}</h1>
@@ -32,7 +32,7 @@ const PostTemplate = ({data, pageContext}) => {
               direction='left'
               className='self-end' />
           }
-          <div className='relative self-center col-start-2'>
+          <div className='relative self-center col-start-2' aria-hidden>
             <span className='absolute border-b border-kumquat w-12 rotate-[30deg]' aria-hidden></span>
             <span className='absolute border-b border-kumquat w-12 rotate-[-60deg]' aria-hidden></span>
           </div>
