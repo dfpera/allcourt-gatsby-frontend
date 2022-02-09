@@ -18,7 +18,10 @@ module.exports = {
         'secondary': '#f7931e',
       },
     },
-    fontFamily: {},
+    fontFamily: {
+      // need to escape the space in font names
+      // 'mono': ['"JetBrains Mono"', 'monospace']
+    },
   },
   plugins: [],
 }

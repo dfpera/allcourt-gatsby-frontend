@@ -8,15 +8,17 @@ const Layout = ({children}) => {
   return (
     <>
       <Helmet>
-        <body className='border-t-8 border-secondary px-8' />
+        <body className='border-t-8 border-secondary
+                         px-8
+                         min-h-screen' />
       </Helmet>
 
-      <div className='max-w-4xl mx-[auto] mt-32'>
+      <div className='relative max-w-5xl mx-[auto] mt-32'>
         <div className='fixed'>
           <Navigation />
         </div>
 
-        <main className='ml-40'>
+        <main className='relative ml-56'>
           {children}
         </main>
 

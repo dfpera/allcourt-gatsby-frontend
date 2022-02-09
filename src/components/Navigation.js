@@ -3,14 +3,21 @@ import { Link } from 'gatsby'
 import Logo from '../images/svg/logo.inline.svg'
 
 const Navigation = () => {
+  const navLinks = [
+    ['/', 'Project Brief'],
+    ['/', 'The Squad'],
+    ['/', 'Process']
+  ]
 
   return (
     <nav>
-      <Logo className='w-20' />
+      <Logo className='w-20 mb-6' />
       <ul>
-        <li><Link to='/'>Project Brief</Link></li>
-        <li><Link to='/'>The Squad</Link></li>
-        <li><Link to='/'>Process</Link></li>
+        {navLinks.map(link => (
+          <li className='mb-2' key={link[1]}>
+            <Link to={link[0]}>{link[1]}</Link>
+          </li>
+        ))}
       </ul>
     </nav>
   )

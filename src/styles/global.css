@@ -3,11 +3,35 @@
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../fonts/JetBrainsMono[wght].woff2') format('woff2 supports variations'),
+      url('../fonts/JetBrainsMono[wght].woff2') format('woff2-variations');
+    font-weight: 100 800;
+    font-stretch: 75% 125%;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../fonts/JetBrainsMono-Italic[wght].woff2') format('woff2 supports variations'),
+      url('../fonts/JetBrainsMono-Italic[wght].woff2') format('woff2-variations');
+    font-weight: 100 800;
+    font-stretch: 75% 125%;
+    font-style: italic;
+  }
+
+  body {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 435;
+    font-style: normal;
+  }
   h1 { @apply text-5xl; }
   h2 { @apply text-4xl; }
-  h3 { @apply text-3xl; }
-  h4 { @apply text-2xl; }
-  h5 { @apply text-xl; }
-
-  /* @font-face {} */
+  h3 { @apply text-2xl; }
+  h4 { @apply text-xl; }
+  /* h5 { @apply text-xl; } */
+  /* p {
+    @apply mb-6;
+  } */
 }

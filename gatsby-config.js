@@ -6,7 +6,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-json`,
     `gatsby-plugin-image`,
     // `gatsby-plugin-mdx`,
     `gatsby-plugin-postcss`,
@@ -28,6 +27,7 @@ module.exports = {
       },
       __key: 'pages'
     },
+    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

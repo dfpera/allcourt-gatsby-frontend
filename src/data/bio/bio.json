@@ -1,0 +1,23 @@
+{
+  "header": "The Squad",
+  "subheader": "Brought to you by",
+  "content": "Our team (or the \"Meow Squad\" as we call ourselves) is made up of four Simon Fraser University students in the Interactive Arts and Technology (SIAT) program. We each hold various areas of expertise, from programming to visual arts, and are working under the wing of instructor Andrew H, who is guiding us through our project's research and development.",
+  "contributors": [
+    {
+      "name": "Daniele Perazzolo",
+      "description": "The tennis guy, also that usability guy"
+    },
+    {
+      "name": "Mandy Ng",
+      "description": "Cat lover, cutest business person"
+    },
+    {
+      "name": "Ashley Tsang",
+      "description": "Visuals"
+    },
+    {
+      "name": "Jarielle Lim",
+      "description": "Gradient enthusiast"
+    }
+  ]
+}

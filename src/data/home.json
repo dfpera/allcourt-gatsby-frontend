@@ -1,5 +1,5 @@
 {
-  "title": "all-court",
-  "subtitle": "a tennis project",
-  "excerpt": "a;lsdkfja;sldkfjklsdf"
+  "header": "all-court",
+  "subheader": "a tennis project",
+  "content": "What do competitive tennis players do to improve their game? Currently options include rigorous practice and using a personal (human) coach. But what if players could take it a step further with a tool that tracks statistics, analyzes performance, and identifies areas of improvement? Our project explores the creation of such a tool."
 }
