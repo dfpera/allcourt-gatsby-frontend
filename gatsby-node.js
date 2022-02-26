@@ -1,57 +1,70 @@
-const path = require('path')
-const slugify = require('./src/helpers/slugify.js')
+// Components
+const {slugify} = require('./src/helpers/slugify.js')
+const {generatePath} = require('./src/helpers/generatePath')
 
-const customCreatePages = async (graphql, actions, jsonDataName) => {
-  const { createPage } = actions
-  const queryJsonFileName = `all${jsonDataName}Json`
+/**
+ * Default GraphQL method for generating most pages. Use this method for creating
+ * pages that don't require any custom GraphQL. In most cases it is better to use
+ * a page level query to get more specific data.
+ *
+ * @param {*} graphql graphql parameter supplied by createPages method
+ * @param {*} {createPage} actions parameter supplied by createPages method
+ * @param {*} reporter reporter parameter supplied by createPages method
+ * @param {*} pageName name of the document in Sanity
+ * @param {*} pathDirectory directory of page if you want to override the pageName
+ */
+const sanityCreatePages = async (
+  graphql,
+  {createPage},
+  reporter,
+  pageName,
+  pathDirectory = null
+) => {
   const query = await graphql(`
-    query {
-       ${queryJsonFileName} {
-        nodes {
-          id
-          header
-          subheader
-          entryNum
+    {
+      allSanity${pageName}(
+        filter: {
+          slug: { current: { ne: null } },
+        }
+      ) {
+        edges {
+          node {
+            id
+            slug {
+              current
+            }
+          }
         }
       }
     }
   `)
 
-  if (query.errors) throw query.errors
+  if (query.errors) {
+    reporter.panic(`[Gatsby-Node] Error retrieving GraphQL for ${pageName}`, query.errors)
+    throw query.errors
+  }
+  reporter.info(`[Gatsby-Node] Settings successfully retrieved GraphQL for ${pageName}`)
 
-  const allEntries = query.data[queryJsonFileName].nodes
+  const queryEdges = (query.data[`allSanity${pageName}`] || {}).edges || []
+  queryEdges
+    .forEach(edge => {
+      const {id, slug = {}} = edge.node
 
-  allEntries.forEach((entry, index) => {
-    const pathVar = `/${jsonDataName.toLowerCase()}${slugify.slugify(entry.header)}`
-    var nextEntry, prevEntry = null
-
-    // Next post info
-    if (index !== 0) {
-      nextEntry = allEntries[index - 1]
-      nextEntry.slug = `/${jsonDataName.toLowerCase()}${slugify.slugify(nextEntry.header)}`
-      nextEntry.index = index - 1
-    }
-
-    // Prev post info
-    if (index !== allEntries.length - 1) {
-      prevEntry = allEntries[index + 1]
-      prevEntry.slug = `/${jsonDataName.toLowerCase()}${slugify.slugify(prevEntry.header)}`
-      prevEntry.index = index + 1
-    }
-
-    createPage({
-      path: pathVar,
-      component: path.resolve(`./src/components/${jsonDataName}Template.js`),
-      context: {
-        id: entry.id,
-        index: index,
-        next: nextEntry,
-        prev: prevEntry
-      }
+      createPage({
+        path: generatePath(
+          pathDirectory || pageName,
+          slug.current
+        ),
+        component: require.resolve(`./src/templates/${pageName}Template.js`),
+        ownerNodeId: id,
+        context: {
+          id,
+        }
+      })
     })
-  })
+  reporter.info(`[Gatsby-Node] Pages created for ${pageName}`)
 }
 
-exports.createPages = async ({ graphql, actions }) => {
-  await customCreatePages(graphql, actions, 'Process')
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  await sanityCreatePages(graphql, actions, reporter, 'Page')
 }
