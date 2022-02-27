@@ -1,5 +1,4 @@
 // Components
-const {slugify} = require('./src/helpers/slugify.js')
 const {generatePath} = require('./src/helpers/generatePath')
 
 /**
@@ -27,12 +26,12 @@ const sanityCreatePages = async (
           slug: { current: { ne: null } },
         }
       ) {
-        edges {
-          node {
-            id
-            slug {
-              current
-            }
+        nodes {
+          title
+          subtitle
+          id
+          slug {
+            current
           }
         }
       }
@@ -45,24 +44,63 @@ const sanityCreatePages = async (
   }
   reporter.info(`[Gatsby-Node] Settings successfully retrieved GraphQL for ${pageName}`)
 
-  const queryEdges = (query.data[`allSanity${pageName}`] || {}).edges || []
-  queryEdges
-    .forEach(edge => {
-      const {id, slug = {}} = edge.node
+  const allNodes = query.data[`allSanity${pageName}`].nodes
+
+  allNodes
+    .forEach((node, index) => {
+      // TODO: Not sure what the best way to handle pagination for different
+      // types of pages would be... is it too much to do the job all the time?
+      var paginationNodes = getNextAndPrevNodes(allNodes, index, pageName)
 
       createPage({
         path: generatePath(
           pathDirectory || pageName,
-          slug.current
+          node.slug.current
         ),
         component: require.resolve(`./src/templates/${pageName}Template.js`),
-        ownerNodeId: id,
         context: {
-          id,
+          id: node.id,
+          index: index,
+          next: paginationNodes?.next ?? '',
+          prev: paginationNodes?.prev ?? ''
         }
       })
     })
   reporter.info(`[Gatsby-Node] Pages created for ${pageName}`)
+}
+
+/**
+ * Get the next and previous nodes relative to the current node.
+ *
+ * @param {*} allNodes graphql object of all the data nodes
+ * @param {*} index num of current node index
+ * @param {*} pageName name of the document in Sanity
+ * @param {*} pathDirectory directory of the page if you want to override the pageName
+ * @returns object with the next and prev nodes
+ */
+const getNextAndPrevNodes = (
+  allNodes,
+  index,
+  pageName,
+  pathDirectory = null
+) => {
+  var next, prev = null
+
+  // Next post info
+  if (index !== 0) {
+    next = allNodes[index - 1]
+    next.path = generatePath(pathDirectory || pageName, next.slug.current)
+    next.index = index - 1
+  }
+
+  // Prev post info
+  if (index !== allNodes.length - 1) {
+    prev = allNodes[index + 1]
+    prev.path = generatePath(pathDirectory || pageName, prev.slug.current)
+    prev.index = index + 1
+  }
+
+  return {next, prev}
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {

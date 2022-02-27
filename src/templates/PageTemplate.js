@@ -8,7 +8,7 @@ import ContentBlocks from '../components/contentBlocks/contentBlocks'
 import Layout from '../components/Layout'
 import TennisCourtSvg from '../images/svg/tenniscourt.inline.svg'
 
-const PageTemplate = ({data}) => {
+const PageTemplate = ({data, pageContext}) => {
   const {
     title,
     subtitle,

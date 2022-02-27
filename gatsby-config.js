@@ -22,7 +22,6 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    // 'gatsby-plugin-mdx',
     'gatsby-plugin-postcss',
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',

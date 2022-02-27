@@ -8,7 +8,7 @@ import ContentBlocks from '../components/contentBlocks/contentBlocks'
 import Layout from '../components/Layout'
 import PaginationItem from '../components/PaginationItem'
 
-const ProcessTemplate = ({data}) => {
+const ProcessTemplate = ({data, pageContext}) => {
   console.log("Data", data.page)
   const {
     title,
@@ -20,12 +20,16 @@ const ProcessTemplate = ({data}) => {
     _rawContentBlocks
   } = data.page
 
+  console.log('next page', pageContext.next)
+
   return (
     <Layout>
       <div className='px-12'>
         <header className='mb-8'>
           <span className='block mb-12 text-primary text-3xl' aria-hidden>
-            {entryNum}
+            {pageContext.index < 10
+              ? `0${pageContext.index}`
+              : pageContext.index }
           </span>
           <h1 className='mb-4 tracking-tighter'>{title}</h1>
           <p className='italic text-gray'>{subtitle}</p>
@@ -36,7 +40,7 @@ const ProcessTemplate = ({data}) => {
         <hr className='my-12 rotate-[-1deg] text-secondary mx-[-3rem]' />
 
         {/* Pagination */}
-        {/* <section className='grid grid-cols-[1fr_3rem_1fr]'>
+        <section className='grid grid-cols-[1fr_3rem_1fr]'>
           {pageContext.next &&
             <PaginationItem entry={pageContext.next}
               direction='left'
@@ -51,7 +55,7 @@ const ProcessTemplate = ({data}) => {
               direction='right'
               className='self-start col-start-3' />
           }
-        </section> */}
+        </section>
       </div>
     </Layout>
   )
