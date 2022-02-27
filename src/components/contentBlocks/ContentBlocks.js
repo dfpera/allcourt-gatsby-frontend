@@ -4,7 +4,7 @@ import React from 'react'
 //Components
 import BioBlock from './BioBlock'
 import CopyBlock from './CopyBlock'
-// import ProcessBlock from './ProcessBlock'
+import ProcessBlock from './ProcessBlock'
 
 const ContentBlocks = ({content}) => {
   function renderBlock(block) {
@@ -13,8 +13,8 @@ const ContentBlocks = ({content}) => {
         return <BioBlock key={block._key} content={block} />
       case 'copyBlock':
         return <CopyBlock key={block._key} content={block} />
-      // case 'processBlock':
-      //   return <ProcessBlock key={block._key} content={block} />
+      case 'processBlock':
+        return <ProcessBlock key={block._key} content={block} />
       default:
         return <span style={{
           backgroundColor: 'red',
