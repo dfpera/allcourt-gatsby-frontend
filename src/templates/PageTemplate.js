@@ -9,7 +9,6 @@ import Layout from '../components/Layout'
 import TennisCourtSvg from '../images/svg/tenniscourt.inline.svg'
 
 const PageTemplate = ({data}) => {
-  console.log("Data", data.page)
   const {
     title,
     subtitle,
@@ -37,7 +36,7 @@ const PageTemplate = ({data}) => {
 }
 
 export const data = graphql`
-  query MyQuery($id: String) {
+  query PageQuery($id: String) {
     page: sanityPage(id: {eq: $id}) {
       title
       subtitle

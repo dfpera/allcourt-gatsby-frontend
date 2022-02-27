@@ -67,4 +67,5 @@ const sanityCreatePages = async (
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await sanityCreatePages(graphql, actions, reporter, 'Page')
+  await sanityCreatePages(graphql, actions, reporter, 'Process')
 }
