@@ -1,9 +1,11 @@
 // Packages
 import React from 'react'
-import {graphql} from 'gatsby'
+import { graphql } from 'gatsby'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 // Components
-import Arrow from '../components/Arrow'
+import { useImages } from '../hooks/useImages'
+import { getImageNodeFromObject } from '../helpers/getImageNodeFromObject'
 import ContentBlocks from '../components/contentBlocks/contentBlocks'
 import Layout from '../components/Layout'
 import PaginationItem from '../components/PaginationItem'
@@ -20,16 +22,28 @@ const ProcessTemplate = ({data, pageContext}) => {
     _rawContentBlocks
   } = data.page
 
-  console.log('next page', pageContext.next)
+  // console.log('hook for all images', useImages())
+  // console.log('test get image', heroImage, getImageNodeFromObject(useImages(), heroImage))
+
+  const heroImageData = getImageNodeFromObject(useImages(), heroImage)
+  console.log(heroImageData.childImageSharp.gatsbyImageData)
 
   return (
     <Layout>
       <div className='px-12'>
-        <header className='mb-8'>
+
+        {heroImageData &&
+          <GatsbyImage
+            image={heroImageData.childImageSharp.gatsbyImageData}
+            alt=''
+            className='-mx-12 rotate-[-1deg] z-[-1]'
+          />
+        }
+        <header className='mb-8 -mt-4'>
           <span className='block mb-12 text-primary text-3xl' aria-hidden>
-            {pageContext.index < 10
-              ? `0${pageContext.index}`
-              : pageContext.index }
+            {entryNum < 10
+              ? `0${entryNum}`
+              : entryNum }
           </span>
           <h1 className='mb-4 tracking-tighter'>{title}</h1>
           <p className='italic text-gray'>{subtitle}</p>
@@ -40,7 +54,7 @@ const ProcessTemplate = ({data, pageContext}) => {
         <hr className='my-12 rotate-[-1deg] text-secondary mx-[-3rem]' />
 
         {/* Pagination */}
-        <section className='grid grid-cols-[1fr_3rem_1fr]'>
+        <section className='grid grid-cols-[1fr_3rem_1fr] mb-16'>
           {pageContext.next &&
             <PaginationItem entry={pageContext.next}
               direction='left'
@@ -63,10 +77,11 @@ const ProcessTemplate = ({data, pageContext}) => {
 
 export const query = graphql`
   query ProcessQuery($id: String) {
-      page: sanityProcess(id: {eq: $id}) {
+    page: sanityProcess(id: {eq: $id}) {
       title
       subtitle
       heroImage
+      entryNum
       _rawContentBlocks(resolveReferences: {maxDepth: 10})
     }
   }

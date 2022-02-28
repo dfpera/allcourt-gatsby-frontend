@@ -27,9 +27,9 @@ const sanityCreatePages = async (
         }
       ) {
         nodes {
+          id
           title
           subtitle
-          id
           slug {
             current
           }
@@ -87,17 +87,17 @@ const getNextAndPrevNodes = (
   var next, prev = null
 
   // Next post info
-  if (index !== allNodes.length - 1) {
-    next = allNodes[index + 1]
+  if (index !== 0) {
+    next = allNodes[index - 1]
     next.path = generatePath(pathDirectory || pageName, next.slug.current)
-    next.index = index + 1
+    next.index = index - 1
   }
 
   // Prev post info
-  if (index !== 0) {
-    prev = allNodes[index - 1]
+  if (index !== allNodes.length - 1) {
+    prev = allNodes[index + 1]
     prev.path = generatePath(pathDirectory || pageName, prev.slug.current)
-    prev.index = index - 1
+    prev.index = index + 1
   }
 
   return {next, prev}
