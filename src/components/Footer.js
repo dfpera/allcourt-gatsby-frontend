@@ -1,13 +1,8 @@
 import React from 'react'
 
-const Footer = () => {
+const Footer = ({ className }) => {
   return (
-    <footer className='
-      pt-10
-      pb-3
-      -mb-[3.5rem]
-      text-right
-    '>
+    <footer className={className ?? ''}>
       &copy; {new Date().getFullYear()} Dubu Studios Ltd.
     </footer>
   )

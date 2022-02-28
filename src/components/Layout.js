@@ -24,10 +24,12 @@ const Layout = ({children}) => {
           {children}
         </main>
 
-        <Footer />
+        <Footer className='pt-10 pb-3 -mb-[3.5rem] text-right' />
       </div>
 
-      {/* <div className='border-b-[5rem] ' aria-hidden></div> */}
+      {/* <div className='px-64 -mx-8 mt-20
+                      border-b-[5rem] border-bg' >
+      </div> */}
     </>
   )
 }
