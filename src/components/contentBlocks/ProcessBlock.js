@@ -29,19 +29,19 @@ const ProcessBlock = ({content}) => {
 
   return (
     <section className='mb-32 w-[40rem]'>
+
       <h2>Process</h2>
+
       {allProcessPosts.allSanityProcess.nodes.map((post, i) => (
-        // also need a slug for linking
-        // a better way to handle this maybe?
         <Link
           to={generatePath('process', post.slug.current)}
-          className='relative block p-8 my-4'
+          className='group relative block p-8 my-4'
           key={post.id}
         >
           <h3 className='text-xl font-[620]'>
-            <span className='absolute left-0 pt-0.5 inline-block
-                              text-base text-primary'
-                              aria-hidden >
+            <span aria-hidden
+                  className='absolute left-0 pt-0.5 inline-block
+                             text-base text-primary' >
               {/* Count backwards from the total length
                 There's probably a better way to do this haha */}
               0{allProcessPosts.allSanityProcess.nodes.length-1-i}
@@ -50,12 +50,15 @@ const ProcessBlock = ({content}) => {
           </h3>
           <p className='text-sm italic text-gray'>{post.subtitle}</p>
           <p className='mt-4'>{post.excerpt}</p>
-          <Arrow className='bottom-6 right-4' />
+          <Arrow className='bottom-6 right-4
+                            group-hover:right-2 transition-all duration-300' />
 
           {/* Container for the tilted background */}
-          <span className='absolute h-[75%] w-full z-[-1] bottom-0 left-0
-                            bg-bg border-b border-kumquat
-                            rotate-[-1deg]' aria-hidden></span>
+          <span aria-hidden
+                className='absolute w-full z-[-1] bottom-0 left-0
+                           border-b border-kumquat rotate-[-1deg]
+                           transition-all duration-300 h-0
+                           group-hover:bg-bg group-hover:h-[75%]'></span>
         </Link>
       ))}
     </section>

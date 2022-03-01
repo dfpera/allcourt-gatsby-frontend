@@ -23,7 +23,7 @@ const PaginationItem = ({
         <p className='font-bold tracking-tighter'>{title}</p>
         <p className='text-sm italic text-gray'>{subtitle}</p>
       </div>
-      <Arrow className='top-0' direction={direction ?? ''} />
+      <Arrow direction={direction ?? ''} className='top-0' />
     </Link>
   )
 }
