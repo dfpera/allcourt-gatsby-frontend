@@ -30,20 +30,18 @@ const ProcessTemplate = ({data, pageContext}) => {
 
   return (
     <Layout>
-      <div className='px-12'>
+      <div className='md:px-12'>
 
         {heroImageData &&
           <GatsbyImage
             image={heroImageData.childImageSharp.gatsbyImageData}
             alt=''
-            className='-mx-12 rotate-[-1deg] z-[-1]'
+            className='rotate-[-1deg] z-[-1] -mx-9 md:-mx-12'
           />
         }
         <header className='mb-8 -mt-4'>
           <span className='block mb-12 text-primary text-3xl' aria-hidden>
-            {entryNum < 10
-              ? `0${entryNum}`
-              : entryNum }
+            {entryNum < 10 ? `0${entryNum}` : entryNum }
           </span>
           <h1 className='mb-4 tracking-tighter'>{title}</h1>
           <p className='italic text-gray'>{subtitle}</p>
@@ -54,20 +52,25 @@ const ProcessTemplate = ({data, pageContext}) => {
         <hr className='my-12 rotate-[-1deg] text-secondary mx-[-3rem]' />
 
         {/* Pagination */}
-        <section className='grid grid-cols-[1fr_3rem_1fr] mb-16'>
+        <section className='mb-16
+                            sm:grid sm:grid-cols-[1fr_1.5rem_1fr]
+                            lg:grid-cols-[1fr_3rem_1fr]'>
           {pageContext.next &&
             <PaginationItem entry={pageContext.next}
-              direction='left'
-              className='self-end' />
+              direction='right'
+              className='self-end mb-6 order-1 sm:order-3 text-right sm:text-left' />
           }
-          <div className='relative self-center col-start-2' aria-hidden>
-            <span className='absolute border-b border-kumquat w-12 rotate-[30deg]' aria-hidden></span>
-            <span className='absolute border-b border-kumquat w-12 rotate-[-60deg]' aria-hidden></span>
+          <div aria-hidden
+               className='relative self-center order-2
+                          p-4 text-center
+                          sm:p-0 sm:text-left' >
+            <span className='absolute border-b border-kumquat rotate-[30deg] w-6 lg:w-10' aria-hidden></span>
+            <span className='absolute border-b border-kumquat rotate-[-60deg] w-6 lg:w-10' aria-hidden></span>
           </div>
           {pageContext.prev &&
             <PaginationItem entry={pageContext.prev}
-              direction='right'
-              className='self-start col-start-3' />
+              direction='left'
+              className='self-start mt-6 order-3 sm:order-1' />
           }
         </section>
       </div>

@@ -10,16 +10,18 @@ const Navigation = () => {
   ]
 
   return (
-    <nav>
-      <Logo className='w-20 mb-6' />
-      <ul>
+    <>
+      <Logo className='min-w-[5rem] w-20 mb-6' />
+
+      <ul className='flex flex-wrap justify-evenly lg:block'>
         {navLinks.map(link => (
-          <li className='mb-2' key={link[1]}>
+          <li key={link[1]}
+              className='mb-2 px-5 lg:pl-3 lg:pr-5'>
             <Link to={link[0]}>{link[1]}</Link>
           </li>
         ))}
       </ul>
-    </nav>
+    </>
   )
 }
 

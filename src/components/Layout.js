@@ -15,12 +15,13 @@ const Layout = ({children}) => {
       {/* Top orange border thing for aesthetics */}
       <div className='border-t-8 border-secondary fixed top-0 left-0 right-0 z-10' aria-hidden></div>
 
-      <div className='relative max-w-5xl mx-[auto] pt-32'>
-        <div className='fixed'>
+      <div className='relative max-w-5xl mx-[auto] mt-8 lg:mt-32'>
+        <nav className='flex flex-auto items-center justify-between
+                        lg:block lg:fixed' >
           <Navigation />
-        </div>
+        </nav>
 
-        <main className='relative ml-56'>
+        <main className='relative lg:ml-56'>
           {children}
         </main>
 

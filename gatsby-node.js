@@ -11,15 +11,17 @@ const {generatePath} = require('./src/helpers/generatePath')
  * @param {*} reporter reporter parameter supplied by createPages method
  * @param {*} pageName name of the document in Sanity
  * @param {*} pathDirectory directory of page if you want to override the pageName
+ * @param {*} customQuery a graphql query to override the default
  */
 const sanityCreatePages = async (
   graphql,
   {createPage},
   reporter,
   pageName,
-  pathDirectory = null
+  pathDirectory = null,
+  customQuery = null
 ) => {
-  const query = await graphql(`
+  var query = await graphql(`
     {
       allSanity${pageName}(
         filter: {
@@ -37,6 +39,11 @@ const sanityCreatePages = async (
       }
     }
   `)
+
+  if (customQuery) {
+    query = customQuery
+    reporter.info(`[Gatsby-Node] Custom query detected for ${pageName}`)
+  }
 
   if (query.errors) {
     reporter.panic(`[Gatsby-Node] Error retrieving GraphQL for ${pageName}`, query.errors)
@@ -87,23 +94,46 @@ const getNextAndPrevNodes = (
   var next, prev = null
 
   // Next post info
-  if (index !== 0) {
-    next = allNodes[index - 1]
+  if (index !== allNodes.length - 1) {
+    next = allNodes[index + 1]
     next.path = generatePath(pathDirectory || pageName, next.slug.current)
-    next.index = index - 1
+    next.index = index + 1
   }
 
   // Prev post info
-  if (index !== allNodes.length - 1) {
-    prev = allNodes[index + 1]
+  if (index !== 0) {
+    prev = allNodes[index - 1]
     prev.path = generatePath(pathDirectory || pageName, prev.slug.current)
-    prev.index = index + 1
+    prev.index = index - 1
   }
 
+  console.log('Pagination test: ', {next, prev})
   return {next, prev}
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await sanityCreatePages(graphql, actions, reporter, 'Page')
-  await sanityCreatePages(graphql, actions, reporter, 'Process')
+
+  const processQuery = await graphql(`
+    {
+      allSanityProcess(
+        filter: {
+          slug: { current: { ne: null } }
+        }
+        sort: {fields: date, order: ASC}
+      ) {
+        nodes {
+          id
+          date
+          title
+          subtitle
+          entryNum
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `)
+  await sanityCreatePages(graphql, actions, reporter, 'Process', null, processQuery)
 }
